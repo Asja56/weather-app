@@ -54,10 +54,10 @@
   --neutral-0: hsl(0, 0%, 100%);
   --neutral-200: hsl(250, 6%, 84%);
   --neutral-300: hsl(240, 6%, 70%);
-  --neutral-600: hsl(243, 23%, 30%);
-  --neutral-700: hsl(243, 23%, 24%);
-  --neutral-800: hsl(243, 27%, 20%);
-  --neutral-900: hsl(243, 96%, 9%);
+  --neutral-600: #3C3A5F;
+  --neutral-700: #25253F;
+  --neutral-800: #2F2F49;
+  --neutral-900: #02012B;
 
   --sans: "DM Sans", system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: "Bricolage Grotesque", system-ui, "Segoe UI", Roboto, sans-serif;
