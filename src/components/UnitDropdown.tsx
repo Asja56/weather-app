@@ -16,7 +16,10 @@ type SettingsState = {
 
 const STORAGE_KEY = "weather-app-units";
 
-const defaultSettingsBySystem: Record<UnitSystem, Omit<SettingsState, "system">> = {
+const defaultSettingsBySystem: Record<
+  UnitSystem,
+  Omit<SettingsState, "system">
+> = {
   metric: {
     temperature: "Celsius",
     windSpeed: "km/h",
@@ -65,7 +68,7 @@ function getInitialSettings(): SettingsState {
   }
 }
 
-export default function Dropdown() {
+export default function UnitDropdown() {
   const [settings, setSettings] = useState<SettingsState>(getInitialSettings);
 
   useEffect(() => {
@@ -82,20 +85,27 @@ export default function Dropdown() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <button type="button" className="flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2">
+        <button
+          type="button"
+          className="flex items-center gap-2 rounded-md  px-3 py-2 bg-neutral-800"
+        >
           <GearIcon />
           Units
           <ArrowDownIcon />
         </button>
       </DropdownMenu.Trigger>
 
-      <DropdownMenu.Content className="min-w-[220px] rounded-md border border-gray-200 bg-white p-3 shadow-lg">
+      <DropdownMenu.Content className="min-w-[220px] rounded-md  bg-neutral-700 p-3 shadow-lg">
         <button
           type="button"
-          className="mb-3 w-full rounded-md border border-gray-300 px-3 py-2 text-left"
-          onClick={() => switchSystem(settings.system === "metric" ? "imperial" : "metric")}
+          className="mb-3 w-full rounded-md px-3 py-2 text-left"
+          onClick={() =>
+            switchSystem(settings.system === "metric" ? "imperial" : "metric")
+          }
         >
-          {settings.system === "metric" ? "Switch to Imperial" : "Switch to Metric"}
+          {settings.system === "metric"
+            ? "Switch to Imperial"
+            : "Switch to Metric"}
         </button>
 
         <DropdownMenu.Separator className="my-2" />
@@ -106,21 +116,32 @@ export default function Dropdown() {
         <DropdownMenu.RadioGroup
           value={settings.temperature}
           onValueChange={(value) =>
-            setSettings((current) => ({ ...current, temperature: value as TemperatureUnit }))
+            setSettings((current) => ({
+              ...current,
+              temperature: value as TemperatureUnit,
+            }))
           }
         >
-          <DropdownMenu.RadioItem className="flex items-center gap-2 px-2 py-1" value="Celsius">
+          <DropdownMenu.RadioItem
+            className="flex items-center gap-2 rounded-md px-2 py-1 justify-between data-[state=checked]:bg-neutral-800"
+            value="Celsius"
+          >
+            
+            Celsius (°C)
             <DropdownMenu.ItemIndicator>
               <CheckIcon />
             </DropdownMenu.ItemIndicator>
-            Celsius (°C)
           </DropdownMenu.RadioItem>
 
-          <DropdownMenu.RadioItem className="flex items-center gap-2 px-2 py-1" value="Fahrenheit">
+          <DropdownMenu.RadioItem
+            className="flex items-center gap-2 rounded-md px-2 py-1 justify-between data-[state=checked]:bg-neutral-800"
+            value="Fahrenheit"
+          >
+            
+            Fahrenheit (°F)
             <DropdownMenu.ItemIndicator>
               <CheckIcon />
             </DropdownMenu.ItemIndicator>
-            Fahrenheit (°F)
           </DropdownMenu.RadioItem>
         </DropdownMenu.RadioGroup>
 
@@ -131,21 +152,30 @@ export default function Dropdown() {
         <DropdownMenu.RadioGroup
           value={settings.windSpeed}
           onValueChange={(value) =>
-            setSettings((current) => ({ ...current, windSpeed: value as WindSpeedUnit }))
+            setSettings((current) => ({
+              ...current,
+              windSpeed: value as WindSpeedUnit,
+            }))
           }
         >
-          <DropdownMenu.RadioItem className="flex items-center gap-2 px-2 py-1" value="km/h">
+          <DropdownMenu.RadioItem
+            className="flex items-center gap-2 rounded-md px-2 py-1 justify-between data-[state=checked]:bg-neutral-800"
+            value="km/h"
+          >
+            km/h
             <DropdownMenu.ItemIndicator>
               <CheckIcon />
             </DropdownMenu.ItemIndicator>
-            km/h
           </DropdownMenu.RadioItem>
 
-          <DropdownMenu.RadioItem className="flex items-center gap-2 px-2 py-1" value="mph">
+          <DropdownMenu.RadioItem
+            className="flex items-center gap-2 rounded-md px-2 py-1 justify-between data-[state=checked]:bg-neutral-800"
+            value="mph"
+          >
+            mph
             <DropdownMenu.ItemIndicator>
               <CheckIcon />
             </DropdownMenu.ItemIndicator>
-            mph
           </DropdownMenu.RadioItem>
         </DropdownMenu.RadioGroup>
 
@@ -156,21 +186,30 @@ export default function Dropdown() {
         <DropdownMenu.RadioGroup
           value={settings.precipitation}
           onValueChange={(value) =>
-            setSettings((current) => ({ ...current, precipitation: value as PrecipitationUnit }))
+            setSettings((current) => ({
+              ...current,
+              precipitation: value as PrecipitationUnit,
+            }))
           }
         >
-          <DropdownMenu.RadioItem className="flex items-center gap-2 px-2 py-1" value="mm">
+          <DropdownMenu.RadioItem
+            className="flex items-center gap-2 rounded-md px-2 py-1 justify-between data-[state=checked]:bg-neutral-800"
+            value="mm"
+          >
+            Millimeters (mm)
             <DropdownMenu.ItemIndicator>
               <CheckIcon />
             </DropdownMenu.ItemIndicator>
-            Millimeters (mm)
           </DropdownMenu.RadioItem>
 
-          <DropdownMenu.RadioItem className="flex items-center gap-2 px-2 py-1" value="in">
+          <DropdownMenu.RadioItem
+            className="flex items-center gap-2 rounded-md px-2 py-1 justify-between data-[state=checked]:bg-neutral-800"
+            value="in"
+          >
+            Inches (in)
             <DropdownMenu.ItemIndicator>
               <CheckIcon />
             </DropdownMenu.ItemIndicator>
-            Inches (in)
           </DropdownMenu.RadioItem>
         </DropdownMenu.RadioGroup>
       </DropdownMenu.Content>
