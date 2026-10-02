@@ -56,7 +56,7 @@ const HourlyForecast = ({ hourlyWeather }: HourlyProps) => {
           <img
             alt="Weather icon"
             className="size-10"
-            src={`/weather/icon-${hour.image}.webp`}
+            src={`/weather-app/weather/icon-${hour.image}.webp`}
           />
           {hour.time}
         </div>

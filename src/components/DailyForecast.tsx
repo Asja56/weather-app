@@ -29,7 +29,7 @@ const DailyForecast = ({ dailyWeather }: DailyProps) => {
       <img
         alt="Weather icon"
         className="size-10"
-        src={`/weather/icon-${day.image}.webp`}
+        src={`/weather-app/weather/icon-${day.image}.webp`}
       />
       <div className="w-full inline-flex justify-between items-center">
         <div>

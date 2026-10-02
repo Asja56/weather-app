@@ -35,7 +35,7 @@ const CurrentWeatherComponent = ({
           <img
             alt="Weather icon"
             className="size-16"
-            src={`/weather/icon-${getWeatherIcon(currentWeather?.weather_code ?? 0) }.webp`}
+            src={`/weather-app/weather/icon-${getWeatherIcon(currentWeather?.weather_code ?? 0) }.webp`}
           />
           <div className="text-right self-center text-6xl lg:text-8xl italic">
           {currentWeather ? (
