@@ -34,6 +34,7 @@ The challenge name is Weather app. Requirements are under this link https://www.
 <img width="1277" height="584" alt="image" src="./app-screenshot.png" />
 
 ### Links
+- Solution Url: [FrontendMentor solution](https://www.frontendmentor.io/solutions/weather-app-with-react-l0dEFo3Kae)
 - Live Site URL: [GitHub Pages](https://asja56.github.io/weather-app/)
 
 ## My process
