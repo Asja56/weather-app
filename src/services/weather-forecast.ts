@@ -1,5 +1,6 @@
 // https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m
 
+import type { SettingsState } from "../components/UnitDropdown";
 import type { City, WeatherForecast } from "./weather-forecast.interface";
 
 const GEO_URL = "https://api.open-meteo.com/v1/forecast";
@@ -21,7 +22,10 @@ export async function searchCities(cityName: string): Promise<City[]> {
   return data.results ?? [];
 }
 
-export async function getWeather(city: City): Promise<WeatherForecast> {
+export async function getWeather(
+  city: City,
+  units: SettingsState,
+): Promise<WeatherForecast> {
   const params = new URLSearchParams({
     latitude: city.latitude.toString(),
     longitude: city.longitude.toString(),
@@ -32,6 +36,10 @@ export async function getWeather(city: City): Promise<WeatherForecast> {
     current:
       "temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,precipitation,wind_speed_10m,uv_index,visibility,surface_pressure,cloud_cover,is_day",
     timezone: city.timezone,
+
+    temperature_unit: units.temperature,
+    wind_speed_unit: units.windSpeed,
+    precipitation_unit: units.precipitation,
   });
   const response = await fetch(`${GEO_URL}?${params.toString()}`);
 

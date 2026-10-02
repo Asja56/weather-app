@@ -29,7 +29,7 @@ const HourlyForecast = ({ hourlyWeather }: HourlyProps) => {
               timeStyle: "short",
             }).format(new Date(time)),
             image: getWeatherIcon(hourlyWeather.weather_code[index]),
-            temperature: hourlyWeather.apparent_temperature[index],
+            temperature: Math.round(hourlyWeather.apparent_temperature[index]),
           };
         })
         .filter((hour) => {
@@ -50,7 +50,7 @@ const HourlyForecast = ({ hourlyWeather }: HourlyProps) => {
     return (
       <div
         key={hour.key}
-        className="w-full min-h-16 px-4 py-2 bg-neutral-700 rounded-lg inline-flex justify-between items-center overflow-hidden"
+        className="w-full min-h-10 lg:min-h-16 px-4 py-2 bg-neutral-700 rounded-lg inline-flex justify-between items-center overflow-hidden"
       >
         <div className="flex justify-between items-center gap-10">
           <img
@@ -68,9 +68,10 @@ const HourlyForecast = ({ hourlyWeather }: HourlyProps) => {
       </div>
     );
   });
+
   return (
     <>
-      <section className="self-stretch px-4 py-6 bg-neutral-800 rounded-lg inline-flex flex-col justify-start items-start gap-3 min-w-[420px]">
+      <section className="self-stretch px-4 py-6 bg-neutral-800 rounded-lg inline-flex flex-col justify-start items-start gap-3 lg:min-w-[420px]">
         <div className="flex justify-between items-center w-full">
           <h3>Hourly forecast</h3>{" "}
           <DaysDropdown
@@ -85,7 +86,19 @@ const HourlyForecast = ({ hourlyWeather }: HourlyProps) => {
             scrollbarWidth: "none",
           }}
         >
-          {hourList}
+          {hours.length > 0 ? (
+            hourList
+          ) : (
+            <>
+              <div className="w-full min-h-10 lg:min-h-16 bg-neutral-700 rounded-lg"></div>
+              <div className="w-full min-h-10 lg:min-h-16 bg-neutral-700 rounded-lg"></div>
+              <div className="w-full min-h-10 lg:min-h-16 bg-neutral-700 rounded-lg"></div>
+              <div className="w-full min-h-10 lg:min-h-16 bg-neutral-700 rounded-lg"></div>
+              <div className="w-full min-h-10 lg:min-h-16 bg-neutral-700 rounded-lg"></div>
+              <div className="w-full min-h-10 lg:min-h-16 bg-neutral-700 rounded-lg"></div>
+              <div className="w-full min-h-10 lg:min-h-16 bg-neutral-700 rounded-lg"></div>
+            </>
+          )}
         </div>
       </section>
     </>

@@ -25,7 +25,7 @@ export default function DaysDropdown({
       <DropdownMenu.Trigger asChild>
         <button
           type="button"
-          className="rounded-md flex items-center gap-2 px-3 py-2 bg-neutral-600 overflow-hidden text-lg"
+          className="rounded-md flex items-center gap-2 text-base px-2 py-1 lg:px-3 lg:py-2 lg:text-lg bg-neutral-600 overflow-hidden "
         >
           {selectedDay ?? "Today"}
           <ArrowDownIcon />

@@ -14,8 +14,8 @@ const DailyForecast = ({ dailyWeather }: DailyProps) => {
             weekday: "short",
           }).format(new Date(time)),
           image: getWeatherIcon(dailyWeather.weather_code[index]),
-          highestTemp: dailyWeather.temperature_2m_max[index],
-          lowestTemp: dailyWeather.temperature_2m_min[index],
+          highestTemp: Math.round(dailyWeather.temperature_2m_max[index]),
+          lowestTemp: Math.round(dailyWeather.temperature_2m_min[index]),
         };
       })
     : [];
@@ -48,8 +48,20 @@ const DailyForecast = ({ dailyWeather }: DailyProps) => {
     <>
       <section className="self-stretch inline-flex flex-col justify-start items-start gap-3">
         <h3 className="text-xl font-semibold">Daily forecast</h3>
-        <div className="self-stretch inline-flex justify-start items-start gap-3">
-          {listItems}
+        <div className="grid grid-cols-3 gap-3 self-stretch lg:inline-flex lg:justify-start lg:items-start">
+          {days.length > 0 ? (
+            listItems
+          ) : (
+            <>
+              <div className="flex-1 bg-neutral-800 rounded-lg h-24 lg:h-40"></div>
+              <div className="flex-1 bg-neutral-800 rounded-lg h-24 lg:h-40"></div>
+              <div className="flex-1 bg-neutral-800 rounded-lg h-24 lg:h-40"></div>
+              <div className="flex-1 bg-neutral-800 rounded-lg h-24 lg:h-40"></div>
+              <div className="flex-1 bg-neutral-800 rounded-lg h-24 lg:h-40"></div>
+              <div className="flex-1 bg-neutral-800 rounded-lg h-24 lg:h-40"></div>
+              <div className="flex-1 bg-neutral-800 rounded-lg h-24 lg:h-40"></div>
+            </>
+          )}
         </div>
       </section>
     </>
